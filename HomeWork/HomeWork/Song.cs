@@ -24,6 +24,12 @@ namespace HomeWork
 		{
 			return (songName);
 		}
+
+		public string ShowArtistName()
+		{
+			return (artist);
+		}
+
 		public Song()
 		{
 

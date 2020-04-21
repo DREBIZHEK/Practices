@@ -47,6 +47,18 @@ namespace HomeWork
 			}
 		}
 
+		public void SearchSong(string name)
+		{
+			string sonName = name;
+			foreach (var dis in songs.ToArray())
+			{
+				if (dis.ShowArtistName() == sonName)
+				{
+					dis.Show();
+				}
+			}
+		}
+
 		public Disc(string name)
 		{
 			discName = name;

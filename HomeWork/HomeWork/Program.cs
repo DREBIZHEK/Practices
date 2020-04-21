@@ -22,6 +22,8 @@ namespace ConsoleApp32
 			Console.WriteLine("Show Songs - показать все песни на диске");
 			Console.WriteLine("Show All Songs - показать все песни");
 			Console.WriteLine("Sort Songs  - отсортировать песни на диске");
+			Console.WriteLine("Search Song - поиск песни по исполнителю");
+
 			Console.WriteLine("Exit - закрыть");
 			string comand = "";
 			string anyName;
@@ -42,7 +44,7 @@ namespace ConsoleApp32
 					library.Show();
 					Console.WriteLine("Введите название диска для добавления песни:");
 					anyName = Console.ReadLine();
-					foreach(var disc in library.discs)
+					foreach (var disc in library.discs)
 					{
 						if (disc.ShowName() == anyName)
 						{
@@ -56,7 +58,7 @@ namespace ConsoleApp32
 					}
 				}
 
-				if(comand == "remove disc")
+				if (comand == "remove disc")
 				{
 					library.Show();
 					Console.WriteLine("Введите название диска для удаления:");
@@ -114,6 +116,19 @@ namespace ConsoleApp32
 					{
 						Console.WriteLine("\nСписок песен:");
 						disc.Show();
+					}
+				}
+
+				if (comand == "search song")
+				{
+					Console.WriteLine("Введите имя исполнителя");
+					anyName = Console.ReadLine();
+					foreach (var disc in library.discs)
+					{
+						foreach (var song in library.discs)
+						{
+							song.SearchSong(anyName);
+						}
 					}
 				}
 
