@@ -1,0 +1,7 @@
+C:\Users\bogda\source\repos\HomeWork\HomeWork\bin\Debug\HomeWork.exe.config
+C:\Users\bogda\source\repos\HomeWork\HomeWork\bin\Debug\HomeWork.exe
+C:\Users\bogda\source\repos\HomeWork\HomeWork\bin\Debug\HomeWork.pdb
+C:\Users\bogda\source\repos\HomeWork\HomeWork\obj\Debug\HomeWork.csprojAssemblyReference.cache
+C:\Users\bogda\source\repos\HomeWork\HomeWork\obj\Debug\HomeWork.csproj.CoreCompileInputs.cache
+C:\Users\bogda\source\repos\HomeWork\HomeWork\obj\Debug\HomeWork.exe
+C:\Users\bogda\source\repos\HomeWork\HomeWork\obj\Debug\HomeWork.pdb
