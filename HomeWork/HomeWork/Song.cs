@@ -18,7 +18,7 @@ namespace HomeWork
 
 		public int CompareTo(Song other)
 		{
-			return String.Compare(this.artist, other.artist);
+			return String.Compare(this.songName, other.songName);
 		}
 		public string ShowName()
 		{

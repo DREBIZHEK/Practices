@@ -11,7 +11,7 @@ namespace HomeWork
 		private string discName { get; }
 		private int count = 0;
 		public List<Song> songs = new List<Song>();
-		public void AddSong(string artist,string song)
+		public void AddSong(string artist, string song)
 		{
 			string artistName = artist;
 			string songName = song;
@@ -27,7 +27,7 @@ namespace HomeWork
 
 		public void Show()
 		{
-			
+
 			foreach (var song in songs)
 			{
 				Console.WriteLine("");
@@ -37,26 +37,45 @@ namespace HomeWork
 
 		public void RemoveSong(string son)
 		{
+			bool check = false;
 			string sonName = son;
 			foreach (var dis in songs.ToArray())
 			{
 				if (dis.ShowName() == sonName)
 				{
+					check = true;
+				}
+				if (check)
+				{
 					songs.Remove(dis);
+					Console.WriteLine("Песня {0 удалена}", sonName);
+					break;
 				}
 			}
+			if (!check)
+			{
+				Console.WriteLine("Такой песни не существует");
+			}
+
 		}
 
 		public void SearchSong(string name)
 		{
+			bool check = false;
 			string sonName = name;
 			foreach (var dis in songs.ToArray())
 			{
 				if (dis.ShowArtistName() == sonName)
 				{
+					check = true;
+				}
+				if(check)
+				{
 					dis.Show();
+					check = false;
 				}
 			}
+
 		}
 
 		public Disc(string name)

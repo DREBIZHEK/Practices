@@ -36,7 +36,6 @@ namespace ConsoleApp32
 					Console.WriteLine("Введите название диска:");
 					anyName = Console.ReadLine();
 					library.AddDisc(anyName);
-					Console.WriteLine("Диск {0} добавлен", anyName);
 				}
 
 				if (comand == "add song")
@@ -44,18 +43,46 @@ namespace ConsoleApp32
 					library.Show();
 					Console.WriteLine("Введите название диска для добавления песни:");
 					anyName = Console.ReadLine();
+					bool check = false;
 					foreach (var disc in library.discs)
 					{
 						if (disc.ShowName() == anyName)
+						{
+							check = true;
+						}
+						if (check)
 						{
 							Console.WriteLine("Введите имя артиста");
 							string aName = Console.ReadLine();
 							Console.WriteLine("Введите название песни");
 							string sName = Console.ReadLine();
-							disc.AddSong(aName, sName);
-							Console.WriteLine("Песня {0} добавлена", sName);
+							bool checkS = false;
+							foreach (var discc in library.discs)
+								foreach (var song in discc.songs.ToArray())
+							{
+								if (song.ShowName() == sName)
+								{
+									checkS = true;
+								}
+							}
+							if (!checkS)
+							{
+								disc.AddSong(aName, sName);
+								Console.WriteLine("Песня {0} добавлена", sName);
+								break;
+							}
+							else
+							{
+								Console.WriteLine("Такая песня уже существует");
+							}
+							checkS = false;
 						}
 					}
+					if (!check)
+					{
+						Console.WriteLine("Такого диска не существует");
+					}
+					check = false;
 				}
 
 				if (comand == "remove disc")
@@ -64,7 +91,7 @@ namespace ConsoleApp32
 					Console.WriteLine("Введите название диска для удаления:");
 					anyName = Console.ReadLine();
 					library.RemoveDisc(anyName);
-					Console.WriteLine("Диск {0} удален", anyName);
+
 				}
 
 				if (comand == "remove song")
@@ -72,21 +99,32 @@ namespace ConsoleApp32
 					library.Show();
 					Console.WriteLine("Введите название диска с которого вы хотите удалить песню:");
 					anyName = Console.ReadLine();
+					bool check = false;
 					foreach (var disc in library.discs)
 					{
 						if (disc.ShowName() == anyName)
 						{
+							check = true;
+						}
+						if (check)
+						{
 							Console.WriteLine("\nСписок песен:");
 							disc.Show();
-							Console.WriteLine("Введите название песни которую хотите удалить");
+							Console.WriteLine("Введите название песни которую хотите удалить\n");
 							anyName = Console.ReadLine();
 							foreach (var song in library.discs)
 							{
 								song.RemoveSong(anyName);
 							}
-
+							break;
 						}
+
 					}
+					if (!check)
+					{
+						Console.WriteLine("Такого диска не существует");
+					}
+					check = false;
 
 				}
 
@@ -100,21 +138,31 @@ namespace ConsoleApp32
 					library.Show();
 					Console.WriteLine("Введите название диска для просмотра песен:");
 					anyName = Console.ReadLine();
+					bool check = false;
 					foreach (var disc in library.discs)
 					{
 						if (disc.ShowName() == anyName)
+						{
+							check = true;
+						}
+						if(check)
 						{
 							Console.WriteLine("\nСписок песен:");
 							disc.Show();
 						}
 					}
+					if (!check)
+					{
+						Console.WriteLine("Такого диска не существует");
+					}
+					check = false;
 				}
 
 				if (comand == "show all songs")
 				{
+					Console.WriteLine("\nСписок песен:");
 					foreach (var disc in library.discs)
 					{
-						Console.WriteLine("\nСписок песен:");
 						disc.Show();
 					}
 				}
@@ -125,10 +173,7 @@ namespace ConsoleApp32
 					anyName = Console.ReadLine();
 					foreach (var disc in library.discs)
 					{
-						foreach (var song in library.discs)
-						{
-							song.SearchSong(anyName);
-						}
+						disc.SearchSong(anyName);
 					}
 				}
 
